@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_items', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('logo_url')->nullable();
+            $table->decimal('rating', 3, 2)->default(0);
+            $table->string('categories'); // or use JSON in future if needed
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_items');
+        Schema::dropIfExists('suppliers');
     }
 };
