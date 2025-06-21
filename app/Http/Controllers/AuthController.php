@@ -23,18 +23,23 @@ class AuthController extends Controller
             $request->email === $validEmail &&
             $request->password === $validPassword
         ) {
+
             return response()->json([
-                'token' => 'test_token_12345'
+                'message' => 'Login successful',
+                'token' => 'test_token_12345',
+                // 'userid' => 1
+                'user' => [
+        'id' => 1, // Whatever user id you have
+        'email' => $request->email,
+        
+    ]
+              
             ], 200);
         }
 
         return response()->json([
             'message' => 'Invalid credentials'
         ], 401);
-        
-    //      return response()->json([
-    //     'message' => 'Login function is working!'
-    // ]);
 
     }
 }
